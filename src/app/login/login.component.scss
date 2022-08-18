@@ -2,3 +2,44 @@ form{
     width: 300px!important;
     margin-left: 20px!important;
 }
+
+.mat-card-header {
+    display: flex;
+    flex-direction: column!important;
+    margin-top: 20px!important;
+    text-align: center!important;
+}
+
+.card-wrapper{
+    width: 30%;
+    margin: 20px auto;
+    position: relative;
+}
+
+.logo{
+    border: 1px solid #a1c3ff;
+    position: absolute;
+    z-index: 10;
+    height: 60px;
+    width: 60px;
+    background-color: #a1c3ff;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 36%;
+    margin-top: -46px!important;
+}
+
+i{
+    margin-left: 12px;
+    margin-top: 12px;
+    font-size: 30px;
+}
+
+.fit-size{
+    width: 93%!important;
+}
+
+.register-hint{
+    margin-top:10px;
+    font-size: 13px;
+}

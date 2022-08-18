@@ -4,8 +4,6 @@
             <button mat-raised-button color="primary" (click)="addUser(userDialog)">Add User</button>
         </div>
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-
-            <!-- id Column -->
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
                     No.
@@ -13,7 +11,6 @@
                 <td mat-cell *matCellDef="let element"> {{element.id}} </td>
             </ng-container>
 
-            <!-- Name Column -->
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
                     Name
@@ -21,7 +18,6 @@
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
 
-            <!-- place Column -->
             <ng-container matColumnDef="place">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by place">
                     Place
@@ -29,7 +25,6 @@
                 <td mat-cell *matCellDef="let element"> {{element.place}} </td>
             </ng-container>
 
-            <!-- Action Column -->
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef>
                     Action
@@ -94,3 +89,9 @@
         </form>
     </mat-dialog-content>
 </ng-template>
+
+
+<!-- <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>Drawer content</mat-drawer>
+    <mat-drawer-content>Main content</mat-drawer-content>
+  </mat-drawer-container> -->

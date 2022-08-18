@@ -1,11 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
+// $fa-font-path: "../node_modules/font-awesome/fonts";
+// @import "../node_modules/font-awesome/scss/font-awesome.scss";
+html,
 body {
-     margin: 0;
-     font-family: Roboto, "Helvetica Neue", sans-serif;
-     line-height: 1.2;
-     font-size:16px;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    line-height: 1.2;
+    font-size: 16px;
     background-color: #a1c3ff;
-    color:#333;
+    color: #333;
+}
+a:not([href]):not([class]), a:not([href]):not([class]):hover {
+    color: blue!important;
+    cursor: pointer;
 }
