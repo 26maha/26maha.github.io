@@ -8,6 +8,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         MatGridListModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSidenavModule
+        MatSidenavModule,
+        MatMenuModule
     ],
     exports: [
         MatTableModule,
@@ -31,7 +33,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         MatGridListModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSidenavModule
+        MatSidenavModule,
+        MatMenuModule
     ]
 })
 export class AppMaterial {

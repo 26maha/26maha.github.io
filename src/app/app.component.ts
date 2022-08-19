@@ -24,13 +24,13 @@ export class AppComponent implements OnInit {
     }
   }
 
-  logout() {
-    this.userService.isUserExist = false;
-    localStorage.setItem('isUser', 'false');
-    localStorage.setItem('user', '');
-    this.userService.hide();
-    this.route.navigate(['login'])
-  }
+  // logout() {
+  //   this.userService.isUserExist = false;
+  //   localStorage.setItem('isUser', 'false');
+  //   localStorage.setItem('user', '');
+  //   this.userService.hide();
+  //   this.route.navigate(['login'])
+  // }
 
   public ngOnDestroy(): void {
     this.userService.hide();

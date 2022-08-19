@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { UserComponent } from './user/user.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -15,55 +16,21 @@ import { UserComponent } from './user/user.component';
 export class UsersComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'place', 'action'];
-  dataSource = new MatTableDataSource();
-  @ViewChild(MatSort) sort!: MatSort;
+  // dataSource = new MatTableDataSource();
+  // @ViewChild(MatSort) sort!: MatSort;
+
+  membersList: Array<any> = [];
   user: any = {};
   authorName: any;
   @ViewChild(UserComponent)
   userOne!: UserComponent;
 
-  constructor(private userService: UserService, private dialog: MatDialog) {
-
-    let data = [
-      { name: 'dog', line: 'adv', order: 1 },
-      { name: 'cet', line: 'adv', order: 2 },
-      { name: 'red', line: 'zip', order: 1 },
-      { name: 'green', line: 'zip', order: 2 },
-      { name: 'elephant', line:'adv', order: 3 },
-    ];
-
-    data =data.sort((a,b)=>b.name.localeCompare(a.name));
-
-     console.log(data,"---test")
-
-    let grouped = data.reduce((res:any, curr) => {
-      res[curr.line] = res[curr.line] || [];
-      res[curr.line].push(curr);
-      return res;
-    }, {});
-
-    console.log(  Object.fromEntries(
-      Object.entries(grouped)
-        .sort((a:any, b:any) => b - a)
-    ),"---grouped")
-
-    // let group:any;
-    // let result:any=[];
-
-
-
-    // for (group of Object.keys(grouped)) {
-    //  result[group]=(grouped[group])
-    // }
-
-    // const entries = Object.entries(grouped);
-
-    // console.log(result,"---result")
+  constructor(private userService: UserService, private dialog: MatDialog, private route: Router) {
   }
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }
+  // ngAfterViewInit() {
+  //   this.dataSource.sort = this.sort;
+  // }
 
   ngOnInit() {
     this.getUsers();
@@ -80,35 +47,35 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers() {
-    this.dataSource.data = [];
-    // this.userService.getUser().subscribe(res => {
-    //   this.dataSource.data = res;
-    //   this.dataSource.data.forEach((user: any) => {
-    //     if (user.name != this.authorName) {
-    //       user.sendMsg = true;
-    //     }
-    //     else {
-    //       user.sendMsg = false;
-    //     }
-    //   });
-    // })
+    this.membersList = [];
 
     this.userService.getUser().snapshotChanges().subscribe(res => {
-      this.dataSource.data = res.map(res => ({ key: res.key, ...res.payload.val() }));
-      this.dataSource.data.forEach((user: any) => {
+      this.membersList = res.map(res => ({ key: res.key, ...res.payload.val() }));
+      console.log(this.membersList,"memberlist")
+      this.membersList.forEach((user: any) => {
         if (user.name != this.authorName) {
           user.sendMsg = true;
         }
         else {
           user.sendMsg = false;
         }
-      });
-    })
+      })
+    });
+
   }
 
   showChat(user: any) {
     this.userOne.loadMessages(user);
   }
+
+  logout() {
+    this.userService.isUserExist = false;
+    localStorage.setItem('isUser', 'false');
+    localStorage.setItem('user', '');
+    this.userService.hide();
+    this.route.navigate(['login'])
+  }
+
 
 
 }

@@ -1,4 +1,4 @@
-<div class="body-container">
+<!-- <div class="body-container">
     <div>
         <div class="addClass">
             <button mat-raised-button color="primary" (click)="addUser(userDialog)">Add User</button>
@@ -45,9 +45,9 @@
     <div style="margin-top:73px">
         <app-user></app-user>
     </div>
-</div>
+</div> -->
 
-<ng-template #userDialog>
+<!-- <ng-template #userDialog>
     <h1 matDialogTitle>Add user</h1>
     <mat-dialog-content>
         <form #userForm="ngForm" (ngSubmit)="postUser()">
@@ -88,10 +88,47 @@
             </div>
         </form>
     </mat-dialog-content>
-</ng-template>
+</ng-template> -->
 
 
-<!-- <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened>Drawer content</mat-drawer>
-    <mat-drawer-content>Main content</mat-drawer-content>
-  </mat-drawer-container> -->
+<mat-drawer-container class="main-container">
+    <mat-drawer mode="side" opened class="drawer">
+        <div class="profile-container">
+            <div><img src="../../assets/download.png" alt="Girl in a jacket" width="50" height="50"
+                    style="border-radius:50px"></div>
+            <div class="inner-details">
+                <div class="user-name">Mahalakshmi</div>
+                <div class="user-status">Love is God</div>
+            </div>
+            <div class="user-menu">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="see more">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" yPosition="below" xPosition="before">
+                    <button mat-menu-item>
+                        <mat-icon>settings</mat-icon>
+                        <span>Settings</span>
+                    </button>
+                    <button mat-menu-item (click)="logout()">
+                        <mat-icon>power_settings_new</mat-icon>
+                        <span>Logout</span>
+                    </button>
+                </mat-menu>
+            </div>
+        </div>
+        <div class="member-container">
+            <div *ngFor="let member of membersList" class="member-holder">
+                <div *ngIf="member.sendMsg" class="member-details"  (click)="showChat(member)">
+                    <div><img src="../../assets/images.png" alt="Girl in a jacket" width="50" height="50"
+                            style="border-radius:50px"></div>
+                    <div class="member-subdetails">
+                        <div class="member-name">{{member.name}}</div>
+                        <div class="member-status">{{member.place}}</div>
+                    </div>
+                </div>
+                <hr *ngIf="member.sendMsg">
+            </div>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content> <app-user></app-user></mat-drawer-content>
+</mat-drawer-container>
